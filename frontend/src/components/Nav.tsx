@@ -30,7 +30,7 @@ const Nav = () => {
     <StyledNav>
       {user ? (
         <>
-          <h1>welcome back, {user.name.toLowerCase()}</h1>
+          <h1>welcome back, {user?.name?.toLowerCase()}</h1>
           <ul className="ul-btn">
             <li>
               <IconButton

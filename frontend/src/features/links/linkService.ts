@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ILink } from "../../types";
 
-const API_URL = "/api/links";
+const API_URL = `${process.env.REACT_APP_SERVER_URL}/api/links1`;
 
 const getLinks = async (token: string) => {
   const config = {

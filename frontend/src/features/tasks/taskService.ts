@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ITask } from "../../types";
 
-const API_URL = "/api/tasks";
+const API_URL = `${process.env.REACT_APP_SERVER_URL}/api/tasks`;
 
 const getTasks = async (token: string) => {
   const config = {

@@ -1,7 +1,7 @@
 import axios from "axios";
 // This file is responsible for sending/receiving http requests
 
-const API_URL = "/api/users/";
+const API_URL = `${process.env.REACT_APP_SERVER_URL}/api/users/`;
 
 // Register User Service
 const register = async (userData: object) => {

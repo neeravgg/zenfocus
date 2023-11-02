@@ -8,6 +8,7 @@ import taskRoutes from "./routes/task.routes";
 import colorRoutes from "./routes/color.routes";
 import errorHandler from "./middleware/errorHandler";
 import connectDB from "./config/connect";
+const cors = require("cors");
 
 // Load environment variables
 dotenv.config();
@@ -24,6 +25,7 @@ if (process.env.PORT) {
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 // Routes middleware
 app.use("/api/users", userRoutes);

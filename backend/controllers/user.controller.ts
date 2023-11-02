@@ -9,7 +9,7 @@ import Color from "../models/color.model";
 import Link from "../models/link.model";
 
 // Function to generate JWT
-const generateToken = (id: ObjectId) => {
+const generateToken = (id: any) => {
   if (process.env.JWT_SECRET) {
     return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "30d" });
   }

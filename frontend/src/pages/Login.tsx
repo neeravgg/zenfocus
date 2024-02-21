@@ -33,10 +33,10 @@ const Login = () => {
       toast.error(message);
     }
 
-    if (isSuccess || user) {
-      toast.success("Login successful");
-      navigate("/");
-    }
+    // if (isSuccess || user) {
+    //   toast.success("Login successful");
+    //   navigate("/");
+    // }
 
     dispatch(reset());
   }, [user, isError, isSuccess, message, navigate, dispatch]);

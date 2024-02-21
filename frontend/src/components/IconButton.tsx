@@ -1,9 +1,11 @@
 import { StyledIconButton } from "../styles/IconButton.styled";
+import { IconName } from "../types";
 import Icon from "./Icon";
 import { MouseEventHandler } from "react";
 
+
 interface Props {
-  icon: string;
+  icon: IconName;
   text?: string;
   height: number;
   width: number;

@@ -1,33 +1,30 @@
-import { ReactComponent as BirdIconComponent } from "./Bird.svg";
-import { ReactComponent as BurdIconComponent } from "./Burd.svg";
-import { ReactComponent as CoffeeIconComponent } from "./Coffee.svg";
-import { ReactComponent as CrossIconComponent } from "./Cross.svg";
-import { ReactComponent as FireIconComponent } from "./Fire.svg";
-import { ReactComponent as LogOutIconComponent } from "./Logout.svg";
-import { ReactComponent as MoonIconComponent } from "./Moon.svg";
-import { ReactComponent as NextIconComponent } from "./Next.svg";
-import { ReactComponent as PauseIconComponent } from "./Pause.svg";
-import { ReactComponent as PlayIconComponent } from "./Play.svg";
-import { ReactComponent as PlaylistIconComponent } from "./Playlist.svg";
-import { ReactComponent as PlusIconComponent } from "./Plus.svg";
-import { ReactComponent as RainIconComponent } from "./Rain.svg";
-import { ReactComponent as RestartIconComponent } from "./Restart.svg";
-import { ReactComponent as TickIconComponent } from "./Tick.svg";
-import { ReactComponent as WindIconComponent } from "./Wind.svg";
+import { ReactComponent as BirdIcon } from "./Bird.svg";
+import { ReactComponent as BurdIcon } from "./Burd.svg";
+import { ReactComponent as CoffeeIcon } from "./Coffee.svg";
+import { ReactComponent as CrossIcon } from "./Cross.svg";
+import { ReactComponent as FireIcon } from "./Fire.svg";
+import { ReactComponent as LogOutIcon } from "./Logout.svg";
+import { ReactComponent as MoonIcon } from "./Moon.svg";
+import { ReactComponent as NextIcon } from "./Next.svg";
+import { ReactComponent as PauseIcon } from "./Pause.svg";
+import { ReactComponent as PlayIcon } from "./Play.svg";
+import { ReactComponent as PreviousIcon } from "./Previous.svg";
+import { ReactComponent as PlaylistIcon } from "./Playlist.svg";
+import { ReactComponent as PlusIcon } from "./Plus.svg";
+import { ReactComponent as RainIcon } from "./Rain.svg";
+import { ReactComponent as RestartIcon } from "./Restart.svg";
+import { ReactComponent as TickIcon } from "./Tick.svg";
+import { ReactComponent as WindIcon } from "./Wind.svg";
+import { ReactComponent as VolumeIcon } from "./Volume.svg";
 
-export { BirdIconComponent as BirdIcon };
-export { BurdIconComponent as BurdIcon };
-export { CoffeeIconComponent as CoffeeIcon };
-export { CrossIconComponent as CrossIcon };
-export { FireIconComponent as FireIcon };
-export { LogOutIconComponent as LogOutIcon };
-export { MoonIconComponent as MoonIcon };
-export { NextIconComponent as NextIcon };
-export { PauseIconComponent as PauseIcon };
-export { PlayIconComponent as PlayIcon };
-export { PlaylistIconComponent as PlaylistIcon };
-export { PlusIconComponent as PlusIcon };
-export { RainIconComponent as RainIcon };
-export { RestartIconComponent as RestartIcon };
-export { TickIconComponent as TickIcon };
-export { WindIconComponent as WindIcon };
+export {
+    BirdIcon, BurdIcon,
+    CoffeeIcon, CrossIcon, FireIcon, LogOutIcon, MoonIcon, NextIcon, PauseIcon,
+    PlayIcon, PlaylistIcon,
+    PlusIcon, RainIcon,
+    RestartIcon,
+    TickIcon, WindIcon,PreviousIcon,VolumeIcon
+};
+
+
+

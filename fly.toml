@@ -1,6 +1,6 @@
 # fly.toml file generated for lofi-env on 2022-10-09T12:50:50+11:00
 
-app = "lofi-env"
+app = "zenfocus"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []

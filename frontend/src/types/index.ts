@@ -17,6 +17,12 @@ export interface ILink {
   title: string;
 }
 
+export type IconName = (
+  "BirdIcon" | "BurdIcon" | "CoffeeIcon" | "CrossIcon" | "FireIcon" |
+  "LogOutIcon" | "MoonIcon" | "NextIcon" | "PauseIcon" | "PlayIcon" |
+  "PlaylistIcon" | "PlusIcon" | "RainIcon" | "RestartIcon" | "TickIcon" |
+  "WindIcon" | "PreviousIcon" | "VolumeIcon"
+)
 declare module "styled-components" {
   export interface DefaultTheme {
     colors: {

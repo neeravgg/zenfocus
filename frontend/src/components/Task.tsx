@@ -16,13 +16,13 @@ const Task = ({ task, onDelete, onToggle }: Props) => {
           <h2 className="strike-through">{task.text}</h2>
           <IconButton
             onClick={() => onToggle(task)}
-            icon={"tick"}
+            icon={"TickIcon"}
             height={30}
             width={30}
           />
           <IconButton
             onClick={() => onDelete(task)}
-            icon={"cross"}
+            icon={"CrossIcon"}
             height={30}
             width={30}
           />
@@ -32,13 +32,13 @@ const Task = ({ task, onDelete, onToggle }: Props) => {
           <h2>{task.text}</h2>
           <IconButton
             onClick={() => onToggle(task)}
-            icon={"tick"}
+            icon={"TickIcon"}
             height={30}
             width={30}
           />
           <IconButton
             onClick={() => onDelete(task)}
-            icon={"cross"}
+            icon={"CrossIcon"}
             height={30}
             width={30}
           />

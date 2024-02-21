@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Links from "./Links";
@@ -30,7 +30,7 @@ const Radio = () => {
   const [currentLink, setCurrentLink] = useState(links[index]);
   // Set default link to first link
   const [radioVolume, setRadioVolume] = useState(50);
-
+  const playlistRef = useRef<HTMLDivElement | null>(null);
   // Side effect to changing index state
   useEffect(() => {
     setCurrentLink(links[index]);
@@ -50,12 +50,36 @@ const Radio = () => {
     };
   }, [user, dispatch]);
 
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent) => {
+  //     if (!playlistRef.current?.contains(event.target)) {
+  //       setPlaylistIsShowing(false);
+  //     }
+  //   };
+
+  //   // Add event listener when the component mounts
+  //   document.addEventListener('click', handleClickOutside);
+
+  //   // Remove event listener when the component unmounts
+  //   return () => {
+  //     document.removeEventListener('click', handleClickOutside);
+  //   };
+  // }, []);
+
   const toggleAudioPlay = () => {
     buttonSound.play();
     setIsPlaying(!isPlaying);
   };
 
   // Method to change index state (refers to array of mediaId's)
+  const previousTrack = () => {
+    if (index === 0) {
+      setIndex(links.length - 1);
+    } else {
+      setIndex((index) => index - 1);
+    }
+    setIsPlaying(true);
+  };
   const nextTrack = () => {
     if (index === links.length - 1) {
       setIndex(0);
@@ -91,35 +115,70 @@ const Radio = () => {
   };
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <StyledRadio>
         <StyledRadioMedia>
-          {isPlaying ? (
+          <div style={{ display: "flex" }}>
             <IconButton
-              icon="pause"
-              onClick={toggleAudioPlay}
+              icon="PreviousIcon"
+              onClick={previousTrack}
               height={40}
               width={40}
             />
-          ) : (
-            <IconButton
-              icon="play"
-              onClick={toggleAudioPlay}
-              height={40}
-              width={40}
-            />
-          )}
+            {isPlaying ? (
+              <IconButton
+                icon="PauseIcon"
+                onClick={toggleAudioPlay}
+                height={40}
+                width={40}
+              />
+            ) : (
+              <IconButton
+                icon="PlayIcon"
+                onClick={toggleAudioPlay}
+                height={40}
+                width={40}
+              />
+            )}
 
-          <IconButton icon="next" onClick={nextTrack} height={40} width={40} />
-          <Slider value={radioVolume} onChange={handleVolumeChange} />
+            <IconButton
+              icon="NextIcon"
+              onClick={nextTrack}
+              height={40}
+              width={40}
+            />
+          </div>
+          <div style={{ display: "flex", alignItems : 'center', gap:"10px" }}>
+            <IconButton icon="VolumeIcon" height={40} width={40} />
+            <Slider value={radioVolume} onChange={handleVolumeChange} />
+          </div>
+        </StyledRadioMedia>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <span
+            style={{
+              maxWidth: "90%",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              display: "block",
+            }}
+          >
+            {currentLink.title}
+          </span>
           <IconButton
-            icon="playlist"
+            icon="PlaylistIcon"
             onClick={handleOnClick}
             height={40}
             width={40}
           />
-        </StyledRadioMedia>
-        <h1>{currentLink.title}</h1>
+        </div>
+
         <ReactPlayer
           url={currentLink.url}
           playing={isPlaying}
@@ -130,7 +189,8 @@ const Radio = () => {
         />
       </StyledRadio>
       {playlistIsShowing ? (
-        <StyledPlaylist>
+        <StyledPlaylist ref={playlistRef}>
+          <div></div>
           <h1>playlist ♪</h1>
           <AddLink onAdd={addLink} />
           <Links links={links} onDelete={removeLink} />

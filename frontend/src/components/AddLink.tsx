@@ -44,7 +44,7 @@ const AddLink = ({ onAdd }: Props) => {
         }}
       ></input>
 
-      <IconButton type="submit" icon={"plus"} height={30} width={30} />
+      <IconButton type="submit" icon={"PlusIcon"} height={30} width={30} />
     </StyledAddTask>
   );
 };

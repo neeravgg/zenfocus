@@ -14,7 +14,7 @@ const Link = ({ link, onDelete }: Props) => {
         <h2>{link.title}</h2>
         <IconButton
           onClick={() => onDelete(link)}
-          icon={"cross"}
+          icon={"CrossIcon"}
           height={30}
           width={30}
         />

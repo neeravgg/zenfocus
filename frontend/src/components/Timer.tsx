@@ -101,28 +101,28 @@ const Timer = () => {
 
       <Flex direction="row">
         <IconButton
-          icon={"plus"}
+          icon={"PlusIcon"}
           onClick={incrementTime}
           height={40}
           width={40}
         />
         {!isActive ? (
           <IconButton
-            icon={"play"}
+            icon={"PlayIcon"}
             onClick={timerIsFinished ? undefined : startTimer}
             height={40}
             width={40}
           />
         ) : (
           <IconButton
-            icon={"pause"}
+            icon={"PauseIcon"}
             onClick={stopTimer}
             height={40}
             width={40}
           />
         )}
         <IconButton
-          icon={"restart"}
+          icon={"RestartIcon"}
           onClick={resetTimer}
           height={40}
           width={40}

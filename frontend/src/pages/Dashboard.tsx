@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../app/store";
-import Header from "../components/Header";
 import Timer from "../components/Timer";
 import TaskTracker from "../components/TaskTracker";
 import SoundPlayers from "../components/SoundPlayers";
@@ -14,9 +13,12 @@ import Radio from "../components/Radio";
 import { StyledDashboard } from "../styles/Dashboard.styled";
 import Spinner from "../components/Spinner";
 import Nav from "../components/Nav";
+import IconButton from "../components/IconButton";
+import GifByColor from "../components/GifByColor";
 
 const Dashboard = () => {
   const [gifLoaded, setGifLoaded] = useState(false);
+  const [resetVolume, setResetVolume] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -56,6 +58,17 @@ const Dashboard = () => {
       );
     }
   };
+  const handleCustomizationReset = () => {
+    dispatch(
+      updateColor({
+        ...colors,
+        backgroundColor: "white",
+        primaryTextColor: "black",
+        secondaryTextColor: "white",
+      })
+    );
+    setResetVolume(true);
+  };
 
   return (
     <>
@@ -67,23 +80,19 @@ const Dashboard = () => {
             <TaskTracker />
           </div>
           <div className="section middle">
-            <Header title="lofi-env" />
             <div className="slideshow">
               <ImageContainer
                 onLoad={() => {
                   setGifLoaded(true);
                 }}
               >
-                {colors.backgroundColor === "#181818" ? (
-                  <img src="house-dark.gif" alt="" className="art" />
-                ) : (
-                  <img src="house-light.gif" alt="" className="art" />
-                )}
+                <GifByColor color={colors.backgroundColor} />
               </ImageContainer>
             </div>
             <Radio />
           </div>
 
+          {/* customization */}
           <div className="section last">
             <CirclePicker
               color={colors.backgroundColor}
@@ -100,7 +109,14 @@ const Dashboard = () => {
               ]}
               onChange={handleOnChange}
             />
-            <SoundPlayers />
+            <SoundPlayers
+              resetVolume={resetVolume}
+              setResetVolume={setResetVolume}
+            />
+            <button className="icon-btn" onClick={handleCustomizationReset}>
+              Reset
+              <IconButton icon={"RestartIcon"} height={20} width={20} />
+            </button>
           </div>
         </StyledApp>
       </StyledDashboard>

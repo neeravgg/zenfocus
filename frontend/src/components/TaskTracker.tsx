@@ -42,7 +42,7 @@ const TaskTracker = () => {
   };
   return (
     <StyledTaskTracker>
-      <h1>to-do</h1>
+      <h1>To-do</h1>
       <AddTask onAdd={addTask} />
       <Tasks tasks={tasks} onDelete={removeTask} onToggle={toggleTask} />
     </StyledTaskTracker>

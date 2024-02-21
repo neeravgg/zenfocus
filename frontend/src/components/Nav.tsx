@@ -5,6 +5,7 @@ import { logout, reset } from "../features/auth/authSlice";
 import { RootState } from "../app/store";
 import IconButton from "./IconButton";
 import { toast } from "react-toastify";
+import Header from "./Header";
 
 const buttonSound = new Audio("button_sound.mp3");
 buttonSound.volume = 0.2;
@@ -28,20 +29,21 @@ const Nav = () => {
 
   return (
     <StyledNav>
+      <Header title="ZenFocus" />
       {user ? (
-        <>
+        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
           <h1>welcome back, {user?.name?.toLowerCase()}</h1>
           <ul className="ul-btn">
             <li>
               <IconButton
-                icon="logout"
+                icon="LogOutIcon"
                 onClick={onLogOut}
                 height={30}
                 width={30}
               />
             </li>
           </ul>
-        </>
+        </div>
       ) : (
         <ul className="ul-word-btn">
           <li>

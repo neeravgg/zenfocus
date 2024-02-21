@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/neeravgg/zenfocus.git",
-  "author": "neeravgarg6632gmail.com",
+  "author": "neerav garg",
   "license": "MIT",
   "scripts": {
     "client": "cd frontend && npm start",
 		"server": "cd backend && npm start",
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "yarn server",
     "test": "export NODE_ENV=test && jest"
   },
   "devDependencies": {
@@ -31,15 +32,7 @@
     "@types/jsonwebtoken": "^8.5.8",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^17.0.21",
-    "bcrypt": "^5.0.1",
     "concurrently": "^7.0.0",
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "express-async-handler": "^1.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.2.4",
-    "nodemon": "^2.0.15",
-    "ts-node": "^10.7.0",
     "typescript": "^4.6.2"
   }
 }

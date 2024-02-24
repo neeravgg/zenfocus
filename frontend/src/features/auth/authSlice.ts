@@ -10,6 +10,7 @@ export interface State {
   isError: boolean;
   isSuccess: boolean;
   isLoading: boolean;
+  checkServerLoading: boolean;
   message: PayloadAction | string;
 }
 
@@ -19,6 +20,7 @@ const initialState = {
   isError: false,
   isSuccess: false,
   isLoading: false,
+  checkServerLoading: false,
   message: "",
 } as State;
 
@@ -49,7 +51,27 @@ export const login = createAsyncThunk(
   "auth/login",
   async (user: object, thunkAPI) => {
     try {
-      return await authService.login(user);
+      let res = await authService.login(user);
+      return res;
+    } catch (err: any) {
+      // If any error exists put into message
+      const message =
+        (err.response && err.response.data && err.response.data.message) ||
+        err.message ||
+        err.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+// check server
+export const checkServer = createAsyncThunk(
+  "server/check",
+  async (_, thunkAPI) => {
+    try {
+      let res = await authService.checkServer();
+      console.log({ res });
+
+      return res
     } catch (err: any) {
       // If any error exists put into message
       const message =
@@ -68,6 +90,7 @@ export const authSlice = createSlice({
   reducers: {
     reset: (state) => {
       state.isLoading = false;
+      state.checkServerLoading = false;
       state.isSuccess = false;
       state.isError = false;
       state.message = "";
@@ -107,7 +130,18 @@ export const authSlice = createSlice({
       })
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
-      });
+      })
+      .addCase(checkServer.fulfilled, (state) => {
+        state.checkServerLoading = false;
+      })
+      .addCase(checkServer.pending, (state) => {
+        if (!state.checkServerLoading)
+          state.checkServerLoading = true;
+      })
+      .addCase(checkServer.rejected, (state) => {
+        state.checkServerLoading = false;
+      })
+
   },
 });
 

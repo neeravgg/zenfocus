@@ -2,6 +2,7 @@ import axios from "axios";
 // This file is responsible for sending/receiving http requests
 
 const API_URL = `${process.env.REACT_APP_SERVER_URL}/api/users/`;
+const SERVER_CHECK_URL = `${process.env.REACT_APP_SERVER_URL}/api/server/`;
 
 // Register User Service
 const register = async (userData: object) => {
@@ -27,10 +28,18 @@ const login = async (userData: object) => {
   return response.data;
 };
 
+// Server availability check
+const checkServer = async () => {
+  const response = await axios.get(SERVER_CHECK_URL + "check");
+
+  return response.data;
+};
+
 const authService = {
   register,
   logout,
-  login
+  login,
+  checkServer
 };
 
 export default authService;

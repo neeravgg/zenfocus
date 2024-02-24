@@ -6,6 +6,7 @@ import userRoutes from "./routes/user.routes";
 import linkRoutes from "./routes/link.routes";
 import taskRoutes from "./routes/task.routes";
 import colorRoutes from "./routes/color.routes";
+import serverRoutes from "./routes/server.routes";
 import errorHandler from "./middleware/errorHandler";
 import connectDB from "./config/connect";
 const cors = require("cors");
@@ -32,6 +33,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/links", linkRoutes);
 app.use("/api/colors", colorRoutes);
+app.use("/api/server", serverRoutes);
 
 // Serve frontend
 if (process.env.NODE_ENV === "production") {

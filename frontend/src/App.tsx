@@ -12,15 +12,16 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import GlobalStyles from "./styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./app/store";
 import { DefaultTheme } from "styled-components";
-import { getLocalStorage } from "./utils/StorageHelper";
-import { ReactNode } from "react";
+// import { getLocalStorage } from "./utils/StorageHelper";
+import { ReactNode, useEffect } from "react";
+import { checkServer } from "./features/auth/authSlice";
+import ServerCheckLoading from "./components/ServerCheckLoading";
 
 function App() {
   const { colors } = useSelector((state: RootState) => state.colors);
-  const { user } = useSelector((state: RootState) => state.auth);
 
   // Global theme name space for dashboard styles
   let theme: DefaultTheme = {
@@ -31,39 +32,54 @@ function App() {
     isAllowed?: boolean;
     redirectPath: string;
     children?: ReactNode;
+    isCommon?: boolean;
   }
 
-  const ProtectLoginRoute = ({
+  const ProtectRoute = ({
     isAllowed,
     redirectPath,
     children,
+    isCommon = true,
   }: ProtectRouteProps) => {
-    let token = user?.token;
-    const isAuthTokenValid = isAllowed ? true : token ? false : true;
-
-    return isAuthTokenValid ? (
-      <>{children ? children : <Outlet />}</>
-    ) : (
-      <Navigate to={redirectPath} replace />
+    const dispatch = useDispatch();
+    const { checkServerLoading, user } = useSelector(
+      (state: RootState) => state.auth
     );
+
+    useEffect(() => {
+      dispatch(checkServer());
+    }, [dispatch]);
+
+    if (checkServerLoading) {
+      return <ServerCheckLoading />;
+    } else {
+      let token = user?.token;
+      const isAuthTokenValid = isAllowed ? true : isCommon ? token : !token;
+
+      return isAuthTokenValid ? (
+        <>{children ? children : <Outlet />}</>
+      ) : (
+        <Navigate to={redirectPath} replace />
+      );
+    }
   };
 
-  const ProtectedRoute = ({
-    isAllowed,
-    redirectPath,
-    children,
-  }: ProtectRouteProps) => {
-    // const backTrackRoute = getLocalStorage("backTrackRoute");
-
-    let token = user?.token;
-    const isAuthTokenValid = isAllowed || token ? true : false;
-    const routePath = redirectPath;
-    return isAuthTokenValid ? (
-      <>{children ? children : <Outlet />}</>
-    ) : (
-      <Navigate to={routePath} replace />
-    );
-  };
+  // const ProtectedRoute = ({
+  //   isAllowed,
+  //   redirectPath,
+  //   children,
+  // }: ProtectRouteProps) => {
+  //   const { user } = useSelector((state: RootState) => state.auth);
+  //   // const backTrackRoute = getLocalStorage("backTrackRoute");
+  //   let token = user?.token;
+  //   const isAuthTokenValid = isAllowed || token ? true : false;
+  //   const routePath = redirectPath;
+  //   return isAuthTokenValid ? (
+  //     <>{children ? children : <Outlet />}</>
+  //   ) : (
+  //     <Navigate to={routePath} replace />
+  //   );
+  // };
 
   return (
     <>
@@ -72,29 +88,29 @@ function App() {
         <Router>
           <div className="App">
             <Routes>
-              <Route path="*" element={<Navigate to={'/login'} replace/>} />
+              <Route path="*" element={<Navigate to={"/login"} replace />} />
               <Route
                 path="/"
                 element={
-                  // <ProtectedRoute redirectPath="/login">
+                  // <ProtectRoute redirectPath="/login">
                   <Dashboard />
-                // </ProtectedRoute>
+                  // </ProtectRoute>
                 }
               />
               <Route
                 path="/login"
                 element={
-                  <ProtectLoginRoute redirectPath="/">
+                  <ProtectRoute isCommon={false} redirectPath="/">
                     <Login />
-                  </ProtectLoginRoute>
+                  </ProtectRoute>
                 }
               />
               <Route
                 path="/register"
                 element={
-                  <ProtectLoginRoute redirectPath="/">
+                  <ProtectRoute isCommon={false} redirectPath="/">
                     <Register />
-                  </ProtectLoginRoute>
+                  </ProtectRoute>
                 }
               />
             </Routes>

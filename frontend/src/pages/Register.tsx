@@ -25,7 +25,7 @@ const Register = () => {
   // Initialise redux hook to dispatch a function
   const dispatch = useDispatch();
 
-  const { user, isLoading, isError, isSuccess, message } = useSelector(
+  const { user, isError, isSuccess, message } = useSelector(
     (state: RootState) => state.auth
   );
 

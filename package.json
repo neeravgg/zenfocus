@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "client": "cd frontend && npm start",
-		"server": "cd backend && npm start",
+    "server": "cd backend && npm run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "yarn server",
     "test": "export NODE_ENV=test && jest"

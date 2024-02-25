@@ -1,21 +1,27 @@
 {
     "extends": "../tsconfig.json",
     "compilerOptions": {
-        "target": "esnext", // Set the JavaScript target version
         "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
-        ], // Include necessary libraries
+            "ES5"
+        ],
         "types": [
             "node"
         ],
-        "outDir": "dist", // Output compiled JavaScript to the 'dist' directory
-        "rootDir": "./", // Specify the root directory for TypeScript files
+        "module": "NodeNext",
+        "target": "es5",
+        "outDir": "./dist", // Output compiled JavaScript to the 'dist' directory
         "declaration": true, // Generate type declaration files
-        "sourceMap": true // Generate source maps for debugging
+        "sourceMap": true, // Generate source maps for debugging
+        "esModuleInterop": true,
+        "moduleResolution": "NodeNext",
+        "allowImportingTsExtensions": true,
+        "noEmit": true
     },
     "include": [
-        "./**/*"
+        "./**/*.ts"
     ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
 }

@@ -1,6 +1,6 @@
 import { Response } from "express";
 import asyncHandler from "express-async-handler";
-import { UserAuthInfoRequest } from "../types";
+import { UserAuthInfoRequest } from "../types/index.ts";
 
 
 // @desc    Get server status

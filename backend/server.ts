@@ -2,14 +2,14 @@
 import express from "express";
 import dotenv from "dotenv";
 import path from "path";
-import userRoutes from "./routes/user.routes";
-import linkRoutes from "./routes/link.routes";
-import taskRoutes from "./routes/task.routes";
-import colorRoutes from "./routes/color.routes";
-import serverRoutes from "./routes/server.routes";
-import errorHandler from "./middleware/errorHandler";
-import connectDB from "./config/connect";
-const cors = require("cors");
+import userRoutes from "./routes/user.routes.ts";
+import linkRoutes from "./routes/link.routes.ts";
+import taskRoutes from "./routes/task.routes.ts";
+import colorRoutes from "./routes/color.routes.ts";
+import serverRoutes from "./routes/server.routes.ts";
+import errorHandler from "./middleware/errorHandler.ts";
+import connectDB from "./config/connect.ts";
+import cors from "cors"
 
 // Load environment variables
 dotenv.config();

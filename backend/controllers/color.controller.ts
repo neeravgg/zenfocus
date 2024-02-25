@@ -1,8 +1,8 @@
 import { Response } from "express";
 import asyncHandler from "express-async-handler";
-import { UserAuthInfoRequest } from "../types";
-import Color from "../models/color.model";
-import User from "../models/user.model";
+import { UserAuthInfoRequest } from "../types/index.ts";
+import Color from "../models/color.model.ts";
+import User from "../models/user.model.ts";
 
 // @desc    Get colors
 // @route   GET /api/colors

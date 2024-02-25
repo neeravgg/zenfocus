@@ -5,11 +5,13 @@
             "ES5"
         ],
         "types": [
-            "node"
+            "node",
+            "jest"
         ],
         "module": "NodeNext",
         "target": "es5",
         "outDir": "./dist", // Output compiled JavaScript to the 'dist' directory
+        "rootDir": ".",
         "declaration": true, // Generate type declaration files
         "sourceMap": true, // Generate source maps for debugging
         "esModuleInterop": true,
@@ -18,7 +20,7 @@
         "noEmit": true
     },
     "include": [
-        "./**/*.ts"
+        "./server.ts"
     ],
     "exclude": [
         "node_modules",

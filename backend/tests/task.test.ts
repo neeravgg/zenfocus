@@ -1,10 +1,10 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import request from "supertest";
 import brcrypt from "bcrypt";
-import db from "./config/db";
-import app from "../server";
-import User from "../models/user.model";
-import Task from "../models/task.model";
+import db from "./config/db.ts";
+import app from "../server.ts";
+import User from "../models/user.model.ts";
+import Task from "../models/task.model.ts";
 
 const userPayload = {
   name: "John",

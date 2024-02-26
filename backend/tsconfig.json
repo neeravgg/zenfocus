@@ -1,8 +1,7 @@
 {
-    "extends": "../tsconfig.json",
     "compilerOptions": {
         "lib": [
-            "ES5"
+            "es5"
         ],
         "types": [
             "node",
@@ -10,14 +9,14 @@
         ],
         "module": "NodeNext",
         "target": "es5",
-        "outDir": "./dist", // Output compiled JavaScript to the 'dist' directory
+        "outDir": "./dist",
         "rootDir": ".",
-        "declaration": true, // Generate type declaration files
-        "sourceMap": true, // Generate source maps for debugging
+        "declaration": true,
+        "sourceMap": true,
         "esModuleInterop": true,
         "moduleResolution": "NodeNext",
-        "allowImportingTsExtensions": true,
-        "emitDeclarationOnly": true
+        "emitDeclarationOnly": true,
+        "noEmit": false
     },
     "include": [
         "./server.ts"

@@ -11,7 +11,7 @@
     "start": "ts-node --esm  dist/server.js",
     "dev": "nodemon -x ts-node --esm  server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc"
+    "build": "tsc"
   },
   "engines": {
     "node": ">=14.20.1"

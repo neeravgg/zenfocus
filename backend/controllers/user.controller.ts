@@ -3,10 +3,10 @@ import { ObjectId } from "mongoose";
 import asyncHandler from "express-async-handler";
 import jwt from "jsonwebtoken";
 import brcrypt from "bcrypt";
-import { UserAuthInfoRequest } from "../types/index.ts";
-import User from "../models/user.model.ts";
-import Color from "../models/color.model.ts";
-import Link from "../models/link.model.ts";
+import { UserAuthInfoRequest } from "../types/index";
+import User from "../models/user.model";
+import Color from "../models/color.model";
+import Link from "../models/link.model";
 
 // Function to generate JWT
 const generateToken = (id: any) => {

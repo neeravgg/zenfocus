@@ -1,8 +1,8 @@
 import { Response } from "express";
 import asyncHandler from "express-async-handler";
-import { UserAuthInfoRequest } from "../types/index.ts";
-import Link from "../models/link.model.ts";
-import User from "../models/user.model.ts";
+import { UserAuthInfoRequest } from "../types/index";
+import Link from "../models/link.model";
+import User from "../models/user.model";
 
 // @desc    Get links
 // @route   GET /api/links

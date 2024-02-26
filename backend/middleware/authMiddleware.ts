@@ -2,8 +2,8 @@
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { Response, NextFunction } from "express";
 import asyncHandler from "express-async-handler";
-import { UserAuthInfoRequest } from "../types/index.ts";
-import User from "../models/user.model.ts";
+import { UserAuthInfoRequest } from "../types/index";
+import User from "../models/user.model";
 
 // This middleware verifies whether or not a JWT can be decoded to match an existing id within the DB
 export const verifyToken = asyncHandler(

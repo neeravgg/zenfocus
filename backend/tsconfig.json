@@ -7,15 +7,15 @@
             "node",
             "jest"
         ],
-        "module": "NodeNext",
+        "module": "CommonJS",
         "target": "es5",
         "outDir": "./dist",
         "rootDir": ".",
         "declaration": true,
         "sourceMap": true,
         "esModuleInterop": true,
-        "moduleResolution": "NodeNext",
-        "emitDeclarationOnly": true,
+        "moduleResolution": "node",
+        // "emitDeclarationOnly": true,  // Commented out or set to false
         "noEmit": false
     },
     "include": [

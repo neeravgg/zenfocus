@@ -1,6 +1,6 @@
 import express from "express";
-import controller from "../controllers/link.controller.ts";
-import { verifyToken } from "../middleware/authMiddleware.ts";
+import controller from "../controllers/link.controller";
+import { verifyToken } from "../middleware/authMiddleware";
 
 const router = express.Router();
 

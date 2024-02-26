@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/server.js",
-  "type": "module",
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "start": "ts-node --esm  dist/server.js",
-    "dev": "nodemon -x ts-node --esm  server.ts",
+    "start": "ts-node  dist/server.js",
+    "dev": "nodemon -x ts-node server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
@@ -34,7 +33,7 @@
     "@types/bcrypt": "^5.0.1",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.20",
-    "@types/jest": "^28.1.8",
+    "@types/jest": "^29.5.12",
     "@types/jsonwebtoken": "^9.0.4",
     "@types/supertest": "^2.0.12",
     "eslint": "^8.10.0",

@@ -5,21 +5,20 @@
             "dom"
         ],
         "types": [
-            "node",
-            // "jest"
+            "@types/node",
+            "@types/jest"
         ],
         // "typeRoots": [
         //     "./node_modules/@types"
         // ],
         "module": "CommonJS",
-        "target": "es6",
+        "target": "es2016",
         "outDir": "./dist",
         "rootDir": ".",
         "declaration": true,
         "sourceMap": true,
         "esModuleInterop": true,
         "moduleResolution": "node",
-        // "emitDeclarationOnly": true,  // Commented out or set to false
         "noEmit": false
     },
     "include": [

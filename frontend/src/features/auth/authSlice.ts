@@ -138,9 +138,9 @@ export const authSlice = createSlice({
         if (!state.checkServerLoading)
           state.checkServerLoading = true;
       })
-      .addCase(checkServer.rejected, (state) => {
-        state.checkServerLoading = false;
-      })
+    // .addCase(checkServer.rejected, (state) => {
+    //   state.checkServerLoading = false;
+    // })
 
   },
 });

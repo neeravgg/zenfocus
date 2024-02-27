@@ -74,19 +74,25 @@ const registerUser = asyncHandler(async (req: Request, res: Response) => {
 // @route   POST /api/users/login
 // @access  Public
 const loginUser = asyncHandler(async (req: Request, res: Response) => {
+
   const { email, password } = req.body;
   const user = await User.findOne({ email });
+  try {
 
-  // If user exists and password matches
-  if (user && (await brcrypt.compare(password, user.password))) {
-    res.status(200).json({
-      _id: user.id,
-      name: user.name,
-      email: user.email,
-      /* eslint no-underscore-dangle: 0 */
-      token: generateToken(user._id),
-    });
-  } else {
+    // If user exists and password matches
+    if (user && (await brcrypt.compare(password, user.password))) {
+      res.status(200).json({
+        _id: user.id,
+        name: user.name,
+        email: user.email,
+        /* eslint no-underscore-dangle: 0 */
+        token: generateToken(user._id),
+      });
+    } else {
+      res.status(401);
+      throw new Error("Invalid credentials");
+    }
+  } catch (error) {
     res.status(401);
     throw new Error("Invalid credentials");
   }

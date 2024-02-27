@@ -2,13 +2,9 @@
 
 ## About The Project
 
-Lo-fi and pixel-art themed pomodoro app, equipped with an editable lofi radio, timer, to-do list and relaxing sound effects. This project was essentially born out of my desire for an all-in-one space for all my study needs throughout my professional journey.
-
-
+A pomodoro app with a lo-fi and pixel-art motif that includes a timer, to-do list, editable lo-fi radio, and soothing sound effects. I basically started this endeavor because I wanted a single location to accommodate all of my study demands as I progressed through my career.
 
 <br>
-
-
 
 ## Features
 
@@ -28,6 +24,7 @@ Lo-fi and pixel-art themed pomodoro app, equipped with an editable lofi radio, t
 - TypeScript
 - React.js
 - Redux Toolkit
+- Jest
 - Styled Components (CSS-in-JS)
 
 **Backend:**
@@ -36,7 +33,3 @@ Lo-fi and pixel-art themed pomodoro app, equipped with an editable lofi radio, t
 - Node.js
 - Express.js
 - MongoDB
-
-
-
-

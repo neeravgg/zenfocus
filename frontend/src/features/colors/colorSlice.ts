@@ -32,7 +32,7 @@ export const getColors = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const state = thunkAPI.getState() as RootState;
-      const token = state.auth.user.token;
+      const token = state?.auth.user.token;
       return await colorService.getColors(token);
     } catch (err: any) {
       const message =
